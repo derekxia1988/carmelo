@@ -6,7 +6,7 @@
 		<driver-class>com.mysql.jdbc.Driver</driver-class>
 		<driver-properties>
 			<property name="user" value="root" />
-			<property name="password" value="qwert" />
+			<property name="password" value="xd123456" />
 		</driver-properties>
 		<house-keeping-sleep-time>900000</house-keeping-sleep-time>
 		<maximum-connection-count>10</maximum-connection-count>
