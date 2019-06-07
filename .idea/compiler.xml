@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="carmelo" target="8" />
+      <module name="carmelo" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
