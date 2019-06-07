@@ -1,15 +1,9 @@
 package carmelo.examples.server.login.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
-
 import carmelo.examples.server.login.dao.UserDao;
 import carmelo.examples.server.login.domain.User;
-import carmelo.examples.server.login.dto.TestDto;
 import carmelo.json.JsonBuilder;
 import carmelo.json.JsonUtil;
-import carmelo.json.ResponseType;
 import carmelo.log.CarmeloLogger;
 import carmelo.log.LogUtil;
 import carmelo.servlet.Request;
@@ -18,6 +12,9 @@ import carmelo.session.SessionConstants;
 import carmelo.session.SessionManager;
 import carmelo.session.Users;
 import io.netty.channel.Channel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
 public class UserService {
@@ -54,8 +51,10 @@ public class UserService {
 	 */
 	public byte[] login(String name, String password, Request request) {
 		User user = userDao.getUser(name);
-		if (user == null)
-			return JsonUtil.buildJsonFail("user not exists");
+		if (user == null) {
+			return register(name, password);
+		}
+//			return JsonUtil.buildJsonFail("user not exists");
 		if (!user.getPassword().equals(password))
 			return JsonUtil.buildJsonFail("wrong password");
 		

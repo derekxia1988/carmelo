@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 public class BaseDao<T, PK extends java.io.Serializable> {
 
@@ -48,6 +48,7 @@ public class BaseDao<T, PK extends java.io.Serializable> {
 	}
 
 	@SuppressWarnings("unchecked")
+	@Transactional
 	public PK save(T entity) {
 
 		return (PK) getSession().save(entity);
